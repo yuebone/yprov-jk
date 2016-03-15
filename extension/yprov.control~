@@ -1,0 +1,5 @@
+# provenance extension
+
+comment = 'data provenance for PG'
+default_version = '1.0'
+module_pathname = '/home/bon/proj/ypg/prov/build'
