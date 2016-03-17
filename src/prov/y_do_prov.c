@@ -560,7 +560,6 @@ static y_rtable* y_transformRtable(y_status* st,Node* from,char* flags)
         if(je->quals)
         {
             Expr* expr=(Expr*)je->quals;
-            Assert(IsA(expr,Expr));
             quals_cn=y_transformTargetExpr(st,expr);
         }
 

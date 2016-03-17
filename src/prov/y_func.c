@@ -214,10 +214,10 @@ static void y_ExecutorFinish_hook(QueryDesc *queryDesc)
     MemoryContext old_cxt=MemoryContextSwitchTo(y_prov_once.cxt);
 
     _y_do_prov(&y_prov_once,yconf.data,y_query);
+    MemoryContextSwitchTo(old_cxt);
     y_prov_destroy(&y_prov_once);
 
     y_status='e';
-    MemoryContextSwitchTo(old_cxt);
     ExecutorFinish_hook=yPre_ExecutorFinish_hook;
 
 yexe_std:
@@ -256,7 +256,9 @@ static void y_ProcessUtility_hook(Node *parsetree,
 
     if(y_status=='v')
     {
+        MemoryContext old_cxt=MemoryContextSwitchTo(y_prov_once.cxt);
         _y_do_prov(&y_prov_once,yconf.data,y_query);
+        MemoryContextSwitchTo(old_cxt);
         y_prov_destroy(&y_prov_once);
     }
 

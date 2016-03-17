@@ -1024,10 +1024,8 @@ void y_removeRel_tbl(y_prov_data _data,const char* name)
     y_prov_data_t* data=_data;
     if(!name)
         return;
-    elog(WARNING,"rm name=%s",name);
     cJSON_DeleteItemFromObject(data->relmapJ,name);
     char* buf=cJSON_Print(data->relmapJ);
-    elog(WARNING,"%s",buf);
     data->relmap_updated=1;
 }
 

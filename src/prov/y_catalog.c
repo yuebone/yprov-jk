@@ -32,7 +32,7 @@
 static inline char* y_alloc_cpy_cstr(MemoryContext cxt,const char* cstr)
 {
     size_t len=strlen(cstr);
-    char* str=y_alloc(cxt,len);
+    char* str=y_alloc(cxt,len+1);
     memcpy(str,cstr,len+1);
     return str;
 }
